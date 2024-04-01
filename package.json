@@ -2,7 +2,7 @@
   "name": "projekt-kapusta-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/SebastianAdamoszek/Projekt-Kapusta-Frontend.git",
+  "homepage": "https://sebastianadamoszek.github.io/Kapusta/",
   "dependencies": {
     "@emotion/styled": "^11.11.0",
     "@reduxjs/toolkit": "^2.2.1",
