@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { ReportsLogic } from '../Reports/ReportsLogic';
 import {
   ReportsSummaryWrapper,
@@ -6,43 +7,74 @@ import {
   ReportsSummaryListItem,
   ReportsSummaryExpenses,
   ReportsSummaryIncome,
-  ReportsSummaryIncomeMinus,
-  LineVertical, Currency
+  LineVertical,
+  Currency,
 } from './ReportsSummary.styled';
+import {
+  fetchExpensesSum,
+  fetchIncomeSum,
+} from '../../redux/reports/actionsSummary';
+import {
+  fetchExpensesSumSuccess,
+  fetchExpensesSumFailure,
+  fetchIncomeSumSuccess,
+  fetchIncomeSumFailure,
+} from '../../redux/reports/reducerSummary';
 
 export const ReportsSummary = () => {
-  const { totalValue, income, currency } = ReportsLogic();
+  const { currency } = ReportsLogic();
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  const { summaryExpenses } = useSelector(state => state.summary.expensesSum);
+  const { summaryIncome } = useSelector(state => state.summary.incomeSum);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const expensesSum = await dispatch(fetchExpensesSum());
+        // console.log('Expenses Sum:', expensesSum); 
+        dispatch(fetchExpensesSumSuccess(expensesSum)); 
+        const incomeSum = await dispatch(fetchIncomeSum());
+        // console.log('Income Sum:', incomeSum);
+        dispatch(fetchIncomeSumSuccess(incomeSum)); 
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        dispatch(fetchExpensesSumFailure(error)); 
+        dispatch(fetchIncomeSumFailure(error));
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [dispatch]);
 
   return (
     <ReportsSummaryWrapper>
-      <ReportsSummaryList>
-        <ReportsSummaryListItem>
-          <p>Expenses:</p>
-          <ReportsSummaryExpenses>
-            <span>-</span>
-            <span>{totalValue}</span>
-            <Currency>{currency}</Currency>
-          </ReportsSummaryExpenses>
-        </ReportsSummaryListItem>
-        <li>
-          <LineVertical/>
-        </li>
-        <ReportsSummaryListItem>
-          <p>Income:</p>
-          {income >= 0 ? (
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ReportsSummaryList>
+          <ReportsSummaryListItem>
+            <p>Expenses:</p>
+            <ReportsSummaryExpenses>
+              <span>-</span>
+              <span>{summaryExpenses}</span>
+              <Currency>{currency}</Currency>
+            </ReportsSummaryExpenses>
+          </ReportsSummaryListItem>
+          <li>
+            <LineVertical />
+          </li>
+          <ReportsSummaryListItem>
+            <p>Income:</p>
             <ReportsSummaryIncome>
               <span>+</span>
-              <span>{income}</span>
+              <span>{summaryIncome}</span>
               <Currency>{currency}</Currency>
             </ReportsSummaryIncome>
-          ) : (
-            <ReportsSummaryIncomeMinus>
-              <span>{income}</span>
-              <Currency>{currency}</Currency>
-            </ReportsSummaryIncomeMinus>
-          )}
-        </ReportsSummaryListItem>
-      </ReportsSummaryList>
+          </ReportsSummaryListItem>
+        </ReportsSummaryList>
+      )}
     </ReportsSummaryWrapper>
   );
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { updateUserBalance } from '../Transactions/apiTransactions';
+import { updateUserBalance, downloadUserBalance } from '../Transactions/apiTransactions';
 
 // axios.defaults.baseURL = 'https://kapusta-a0a137454a45.herokuapp.com/';
 axios.defaults.baseURL = 'http://localhost:4000'
@@ -75,6 +75,18 @@ export const updateBalance = createAsyncThunk(
   async (value, thunkAPI) => {
     try {
       const data = await updateUserBalance(value);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const downloadBalance = createAsyncThunk(
+  'users/downloadBalance',
+  async (value, thunkAPI) => {
+    try {
+      const data = await downloadUserBalance(value);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

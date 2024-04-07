@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // axios.defaults.baseURL = 'https://kapusta-a0a137454a45.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:4000'
+axios.defaults.baseURL = 'http://localhost:4000';
 
 export const addExpenseTransaction = async info => {
   const { data } = await axios.post('/transaction/expenses', info);
@@ -13,8 +13,6 @@ export const getExpenseTransactions = async () => {
   const { data } = await axios.get('/transaction/expenses');
   return data;
 };
-
-// --- dwa pierwsze działaja
 
 export const addIncomeTransaction = async info => {
   const { data } = await axios.post('/transaction/income', info);

@@ -14,7 +14,6 @@ const initialState = {
   isRefreshing: false,
   isLoadingCurrentUser: false,
   error: null,
-  balance: 100,
 };
 
 export const handlePending = state => {

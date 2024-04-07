@@ -52,7 +52,7 @@ export const ReportsSummaryListItem = styled.li`
   }
 `;
 
-export const ReportsSummaryExpenses = styled.li`
+export const ReportsSummaryExpenses = styled.p`
   span {
     color: var(--expenses-text-color);
   }
@@ -61,12 +61,6 @@ export const ReportsSummaryExpenses = styled.li`
 export const ReportsSummaryIncome = styled.div`
   span {
     color: var(--profits-text-color);
-  }
-`;
-
-export const ReportsSummaryIncomeMinus = styled.div`
-  span {
-    color: var(--expenses-text-color);
   }
 `;
 
@@ -79,5 +73,5 @@ export const LineVertical = styled.div`
   }
 `;
 export const Currency = styled.span`
-text-transform: uppercase;
+  text-transform: uppercase;
 `;
