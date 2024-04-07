@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
 export const ToTransactionBtn = styled.button`
-  display: flex;
-  align-items: center;
-  margin-top: 75px;
-  padding-left: 20px;
-  border: none;
-  background-color: transparent;
-  column-gap: 5px;
+  @media screen and (max-width: 767.99px) {
+    display: flex;
+    align-items: center;
+    margin: 75px 0 32px 0;
+    border: none;
+    background-color: transparent;
+    column-gap: 5px;
+    position: relative;
+    top: 0;
+    left: -80px;
+  }
 `;
 
 export const Logo = styled.svg`

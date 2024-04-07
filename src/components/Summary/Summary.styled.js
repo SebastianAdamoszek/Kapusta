@@ -4,6 +4,9 @@ export const StyledSummaryTable = styled.ul`
   display: none;
 
   @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 600px;
+    left: -30px;
     min-width: 230px;
     min-height: 278px;
     background-color: #f5f6fb;
@@ -17,6 +20,7 @@ export const StyledSummaryTable = styled.ul`
   }
 
   @media screen and (min-width: 1280px) {
+    position: static;
     margin-top: 0px;
     min-width: 213px;
     max-width: 213px;

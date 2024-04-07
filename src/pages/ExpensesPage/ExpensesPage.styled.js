@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const PageContainer = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const FrameContainer = styled.div`
   /* background-color: transparent; */
 
@@ -11,13 +19,12 @@ export const FrameContainer = styled.div`
     border-radius: 0px 30px 30px 30px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
     position: relative;
-    margin-top: 100px;
+    margin-top: 50px;
   }
 
   @media screen and (min-width: 1280px) {
     padding: 32px 32px 61px;
     max-width: 1098px;
-    margin-top: 48px;
   }
 `;
 
@@ -39,15 +46,6 @@ export const TableAndSummaryContainer = styled.div`
 
   @media screen and (min-width: 1280px) {
     max-width: 1098px;
-    padding-top: 60px;
-  }
-`;
-
-export const StyledHomePage = styled.div`
-  margin-top: 14px;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 96px;
   }
 `;
 
@@ -55,17 +53,16 @@ export const ReportsAndBalanceContainer = styled.div`
 
     @media screen and (min-width: 768px) {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
+      gap: 230px;
       align-items: center;
-      margin: 0 auto;
-      margin-bottom: 60px;
-      margin-right: 32px;
+      margin: 60px 0 32px 0;
+      width: 704px;
     }
-
     @media screen and (min-width: 1280px) {
-      max-width: 1098px;
-      margin-bottom: 8px;
-      margin-right: 91px;
+      width: 1098px;
+      gap: 50px;
+
     }
   }
 `;
