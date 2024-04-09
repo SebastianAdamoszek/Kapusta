@@ -2,7 +2,6 @@ import axios from 'axios';
 
 // axios.defaults.baseURL = 'https://kapusta-a0a137454a45.herokuapp.com/';
 // axios.defaults.baseURL = 'http://localhost:4000';
-axios.defaults.baseURL = 'https://kapusta-backend.netlify.app';
 
 export const downloadSummaryExpenses = async () => {
   try {
