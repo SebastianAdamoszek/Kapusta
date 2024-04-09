@@ -9,7 +9,7 @@ import ArrowR from '../../icons/arrow-r.svg';
 
 export const ReportsChart = () => {
   const location = useLocation();
-  const redirectTo = location.state?.from ?? '/income';
+  const redirectTo = location.state?.from ?? '/expenses';
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const getDataForCategory = category => {
@@ -45,7 +45,9 @@ export const ReportsChart = () => {
 
   return (
     <div className={css.CategoriesWrapper}>
-      <Link to={redirectTo} className={css.LinkIncome}>
+
+
+      <Link to={redirectTo} className={css.LinkExpenses}>
         <img src={ArrowL} alt="arrow" />
         <h2 className={css.Title}>Expenses</h2>
         <img src={ArrowR} alt="arrow" />

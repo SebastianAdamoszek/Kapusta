@@ -7,7 +7,7 @@ import { ReportsLink } from 'components/ReportsLink/ReportsLink';
 import BalanceForm from 'components/BalanceForm/BalanceForm';
 // import { TransactionsList } from '../../components/Expenses/TransactionsList/TransactionsList';
 import {
-  // TransactionNavMobile,
+  TransactionNavMobile,
   TransactionNavDesktop,
 } from 'components/Expenses/TransactionCategoryNav/TransactionCategoryNav';
 
@@ -54,7 +54,7 @@ const Expenses = () => {
         <title>Expenses</title>
       </Helmet>
       <CabbagesBottom />
-      {/* <TransactionNavMobile /> */}
+      <TransactionNavMobile />
       {/* <TransactionsList /> */}
       <PageContainer>
         <ToTransactionButton />
