@@ -2,18 +2,14 @@ import React, { useEffect } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useScreenSize } from 'hooks/useScreenSize';
 import { ReportsLink } from 'components/ReportsLink/ReportsLink';
 import BalanceForm from 'components/BalanceForm/BalanceForm';
-// import { TransactionsList } from '../../components/Expenses/TransactionsList/TransactionsList';
 import {
   TransactionNavMobile,
   TransactionNavDesktop,
 } from 'components/Expenses/TransactionCategoryNav/TransactionCategoryNav';
-
 import Form from 'components/Expenses/Form';
 import { Summary } from 'components/Summary/Summary';
-// import { TransactionListMobile } from '../../components/TransactionListDesktop/TransactionListMobile/TransactionListMobile';
 import { TransactionListDesktop } from 'components/TransactionListDesktop/TransactionListDesktop';
 import { ToTransactionButton } from 'components/ToTransactionButton/ToTransactionButton';
 import {
@@ -32,14 +28,10 @@ import { CabbagesBottom } from '../../components/Background/Authorized/CabbagesB
 
 const Expenses = () => {
   const dispatch = useDispatch();
-
   const allExpenses = useSelector(selectExpenseTransactions);
   const user = useSelector(selectIsLoggedIn);
   const balance = useSelector(selectBalance);
   const color = 'red';
-
-  // const { mobileScreen, tabletScreen, desktopScreen } = useScreenSize();
-
   const location = useLocation();
 
   useEffect(() => {
@@ -55,7 +47,6 @@ const Expenses = () => {
       </Helmet>
       <CabbagesBottom />
       <TransactionNavMobile />
-      {/* <TransactionsList /> */}
       <PageContainer>
         <ToTransactionButton />
         <ReportsAndBalanceContainer>
@@ -64,11 +55,7 @@ const Expenses = () => {
         </ReportsAndBalanceContainer>
         <FrameContainer>
           <TransactionNavDesktop />
-          <Form />
-          {/* <TransactionListMobile>
-          {allExpenses}
-          {color}
-        </TransactionListMobile> */}
+          <Form />    
           <TableAndSummaryContainer>
             <TransactionListDesktop>
               {allExpenses}
@@ -78,9 +65,7 @@ const Expenses = () => {
           </TableAndSummaryContainer>
         </FrameContainer>
       </PageContainer>
-
     </HelmetProvider>
   );
 };
-
 export default Expenses;
