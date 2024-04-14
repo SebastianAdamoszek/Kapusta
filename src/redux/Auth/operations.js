@@ -6,9 +6,8 @@ import {
 } from '../Transactions/apiTransactions';
 
 // axios.defaults.baseURL = 'https://kapusta-a0a137454a45.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:4000';
-axios.defaults.baseURL =
-  'https://app.netlify.com/sites/kapusta-backend/deploys';
+axios.defaults.baseURL = 'http://localhost:4000';
+
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

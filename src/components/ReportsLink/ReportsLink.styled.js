@@ -7,6 +7,10 @@ export const ReportsContainer = styled.div`
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 35px;
+  transition: 0.25s ease-in-out;
+  border: 1px solid rgba(82, 85, 95, 0);
+  border-radius: 15px;
+  padding: 5px;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -15,6 +19,10 @@ export const ReportsContainer = styled.div`
     justify-content: center;
     margin-top: auto;
     margin-bottom: 0;
+  }
+  &:hover {
+    border: 1px solid #ff751d;
+    background-color: #ff751d;
   }
 `;
 
