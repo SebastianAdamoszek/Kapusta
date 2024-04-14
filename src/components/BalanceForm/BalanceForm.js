@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import {
   Form,
@@ -10,27 +10,17 @@ import {
 } from './BalanceForm.styled';
 
 const BalanceForm = () => {
-  // Poprawne użycie hooka useState
-  const [balance, setBalance] = useState('');
-
-  const balanceQuery = useSelector(state => state.auth.balance);
-
-  useEffect(() => {
-    if (balanceQuery !== undefined) {
-      setBalance(balanceQuery);
-    }
-  }, [balanceQuery]);
+  // Pobranie wartości balansu z magazynu Redux
+  // const balance = useSelector(state => state.auth.balance);
+  const balance = useSelector(state => state.balance.balance);
+  console.log('wartosc balance', balance);
 
   return (
     <WrapperForm>
       <Title>Balance:</Title>
       <Form>
         <InputContainer>
-          <Input
-            type="number"
-            value={balance}
-            disabled // Wyłącz edycję
-          />
+          <Input type="number" value={balance} disabled />
           <Label>usd</Label>
         </InputContainer>
       </Form>

@@ -4,7 +4,7 @@ import {
   login,
   logout,
   currentUser,
-  updateBalance,
+  // downloadBalance,
 } from './operations';
 
 const initialState = {
@@ -18,11 +18,6 @@ const initialState = {
 
 export const handlePending = state => {
   state.isLoading = true;
-};
-
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
 };
 
 const authSlice = createSlice({
@@ -42,6 +37,7 @@ const authSlice = createSlice({
       state.user.email = action.payload.user.email;
       state.token = action.payload.token;
     });
+
     builder.addCase(login.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
@@ -57,20 +53,21 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.user.name = action.payload.name;
       state.user.email = action.payload.email;
-      console.log(action.payload)
-      state.balance = action.payload.balance
+      state.balance = action.payload.balance;
       state.isRefreshing = false;
     });
+
     builder.addCase(currentUser.rejected, state => {
       state.isRefreshing = false;
     });
-    builder
-      .addCase(updateBalance.pending, handlePending)
-      .addCase(updateBalance.fulfilled, (state, action) => {
-        state.balance = action.payload.balance;
-        state.isLoading = false;
-      })
-      .addCase(updateBalance.rejected, handleRejected);
+
+    // builder.addCase(downloadBalance.fulfilled, (state, action) => {
+    //   state.balance = action.payload.balance;
+    // });
+
+    // builder.addCase(downloadBalance.rejected, (state, action) => {
+    //   state.error = action.payload;
+    // });
   },
 });
 

@@ -3,9 +3,8 @@ import { authReducer } from './Auth/authSlice';
 import { transactionsReduser } from './Transactions/TransactionsSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
-import { reportsReducer } from './reports/reportsSlice';
-import { reportsQueryReducer } from './reportsQuery/reportsQuerySlice';
 import { summaryReducer } from './reports/reducerSummary';
+import balanceReducer from '../redux/reports/balanceSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -13,14 +12,17 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-// Konfiguracja Redux store
+const balancePersistConfig = {
+  key: 'balance',
+  storage,
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     transactions: transactionsReduser,
-    reports: reportsReducer,
-    reportsQuery: reportsQueryReducer,
     summary: summaryReducer,
+    balance: persistReducer(balancePersistConfig, balanceReducer), 
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -28,8 +30,8 @@ export const store = configureStore({
     }),
 });
 
-// Inicjalizacja persistora do trwałego przechowywania stanu
 export const persistor = persistStore(store);
+
 
 // Sposoby sprawdzenia stanu Redux store:
 /*

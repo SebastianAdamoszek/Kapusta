@@ -39,10 +39,10 @@ export const getExpenseCategories = async () => {
   return data;
 };
 
-export const getPeriodData = async date => {
-  const { data } = await axios.get(`/transaction/period-data?date=${date}`);
-  return data;
-};
+// export const getPeriodData = async date => {
+//   const { data } = await axios.get(`/transaction/period-data?date=${date}`);
+//   return data;
+// };
 
 export const getUserInfo = async () => {
   const { data } = await axios.get('user');
@@ -54,7 +54,17 @@ export const updateUserBalance = async balance => {
   return response.data;
 };
 
+// export const downloadUserBalance = async balance => {
+//   const response = await axios.get('/user/balance', { balance });
+//   return response.data;
+// };
 export const downloadUserBalance = async balance => {
-  const response = await axios.get('/user/balance', { balance });
-  return response.data;
+  try {
+    const response = await axios.get('/user/balance'); 
+    console.log('Response data:', response.data);
+    return response.data.balance; 
+  } catch (error) {
+    console.error('Error fetching balance:', error);
+    throw new Error('Failed to fetch balance from server');
+  }
 };
