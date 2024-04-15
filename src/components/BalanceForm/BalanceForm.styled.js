@@ -71,11 +71,11 @@ export const Input = styled.input`
   font-size: 12px;
   line-height: 1.17;
   color: #000000;
-  text-align: right;
+  text-align: center;
   text-transform: uppercase;
 
   border: 2px solid #ffffff;
-  border-radius: 22px 0 0 22px;
+  border-radius: 22px;
   background-color: transparent;
   outline: none;
 

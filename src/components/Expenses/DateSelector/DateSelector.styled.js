@@ -6,6 +6,9 @@ export const StyledDatePicker = styled.div`
     height: 20px;
     fill: #52555f;
   }
+  @media screen and (min-width: 768px) {
+    margin-top: 13px;
+  }
 
   .datePicker {
     display: flex;

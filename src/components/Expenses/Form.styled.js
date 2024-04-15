@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 40px;
   @media screen and (min-width: 768px) {
-    margin-top: 0;
     align-items: flex-start;
     justify-content: space-between;
   }
@@ -45,8 +43,7 @@ export const ProductInput = styled.input`
   height: 44px;
   padding: 2px 20px;
   border: 2px solid #ffffff;
-  border-bottom: none;
-  border-radius: 16px 16px 0 0;
+  border-radius: 16px 0 0 16px;
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;

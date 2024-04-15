@@ -1,10 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Category = styled.div`
-  position: relative;
-
-  /* margin-left: 20px;
-  margin-right: 20px; */
+  position: relative; 
 
   @media screen and (min-width: 768px) {
     height: 44px;
@@ -13,41 +10,32 @@ export const Category = styled.div`
 
 export const Wrapper = styled.div`
   position: relative;
-
   display: flex;
   align-items: center;
-
   width: 280px;
   height: 44px;
-
   padding: 2px 20px;
-  /* margin-bottom: 32px; */
-
+  margin-bottom: 2px;
   border: 2px solid #ffffff;
-  border-bottom-right-radius: 20px;
-
+  border-radius: 20px 20px 0 0;
   background-color: #f5f6fb;
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 186px;
-
     border-radius: 0;
     border-color: #f5f6fb;
-
     background-color: #ffffff;
   }
 
   @media screen and (min-width: 1280px) {
     width: 169px;
   }
-
   span {
     font-weight: 400;
     font-size: 12px;
     line-height: 1.16;
     letter-spacing: 0.02em;
-
     color: #c7ccdc;
   }
 
@@ -63,13 +51,9 @@ export const SelectBody = styled.div`
   top: 100%;
   left: 0;
   z-index: 3;
-  /* margin-bottom: 32px; */
-
   width: 280px;
-
   border: 2px solid #f5f6fb;
-  border-bottom-right-radius: 20px;
-
+  border-radius: 0 0 20px 20px;
   background-color: #fff;
   box-shadow: 0px 3px 4px rgba(170, 178, 197, 0.4);
 
@@ -86,15 +70,12 @@ export const SelectBody = styled.div`
 export const CategoryElement = styled.div`
   display: flex;
   align-items: center;
-
   padding: 8px 20px;
   height: 32px;
-
   font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
-
   cursor: pointer;
   color: #c7ccdc;
 

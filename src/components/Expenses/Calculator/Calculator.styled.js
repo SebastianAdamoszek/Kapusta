@@ -90,4 +90,7 @@ export const Image = styled.img`
   position: absolute;
   top: 12px;
   left: 75px;
+  @media screen and (min-width: 768px) {
+    left: 65px;
+  }
 `;
