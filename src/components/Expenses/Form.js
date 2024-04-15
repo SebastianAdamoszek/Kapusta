@@ -7,7 +7,7 @@ import DateSelector from 'components/Expenses/DateSelector';
 import SelectCategory from './SelectCategory/SelectCategory';
 import AmountInput from './Calculator/Calculator';
 import { OrangeButton } from 'components/Buttons/OrangeButton';
-import { WhiteButton } from 'components/Buttons/WhiteButton';
+import { StyledWhiteButton } from 'components/Buttons/Buttons.styled';
 import {
   FormWrapper,
   StyledForm,
@@ -92,9 +92,8 @@ export default function Form() {
   };
 
   // Reset form
-
   const handleReset = () => {
-    form.current.reset();
+    window.location.reload();
   };
 
   return (
@@ -120,9 +119,9 @@ export default function Form() {
             </StyledInputsContainer>
             <ButtonWrapper>
               <OrangeButton type="submit">INPUT</OrangeButton>
-              <WhiteButton type="button" onClick={handleReset}>
+              <StyledWhiteButton type="button" onClick={handleReset}>
                 CLEAR
-              </WhiteButton>
+              </StyledWhiteButton>
             </ButtonWrapper>
           </StyledForm>
         )}

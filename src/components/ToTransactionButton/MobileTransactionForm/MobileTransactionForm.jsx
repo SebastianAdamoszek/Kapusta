@@ -98,15 +98,16 @@ export default function MobileTransactionForm() {
       <FormWrapper>
         <StyledForm onSubmit={handleSubmit} ref={form}>
           <StyledInputsContainer>
-            <ProductInput
-              placeholder="Product description"
-              name="description"
-            />
             <SelectCategory
               categoryArray={categoryArray}
               elementCategory={elementCategory}
               setElementCategory={setElementCategory}
             />
+            <ProductInput
+              placeholder="Product description"
+              name="description"
+            />
+
             <AmountInput name="sum" />
           </StyledInputsContainer>
           <ButtonWrapper>
