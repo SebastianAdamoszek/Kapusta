@@ -11,6 +11,7 @@ import {
 import Form from 'components/Expenses/Form';
 import { Summary } from 'components/Summary/Summary';
 import { TransactionListDesktop } from 'components/TransactionListDesktop/TransactionListDesktop';
+import { TransactionListMobile } from 'components/TransactionListDesktop/TransactionListMobile/TransactionListMobile';
 import { ToTransactionButton } from 'components/ToTransactionButton/ToTransactionButton';
 import {
   selectBalance,
@@ -25,6 +26,7 @@ import {
   ReportsAndBalanceContainer,
 } from './ExpensesPage.styled';
 import { CabbagesBottom } from '../../components/Background/Authorized/CabbagesBottom';
+import { useScreenSize } from '../../hooks/useScreenSize';
 
 const Expenses = () => {
   const dispatch = useDispatch();
@@ -33,6 +35,7 @@ const Expenses = () => {
   const balance = useSelector(selectBalance);
   const color = 'red';
   const location = useLocation();
+  const { mobileScreen, tabletScreen, desktopScreen } = useScreenSize();
 
   useEffect(() => {
     if (user) {
@@ -55,12 +58,27 @@ const Expenses = () => {
         </ReportsAndBalanceContainer>
         <FrameContainer>
           <TransactionNavDesktop />
-          <Form />    
+          <Form />
           <TableAndSummaryContainer>
-            <TransactionListDesktop>
-              {allExpenses}
-              {color}
-            </TransactionListDesktop>
+            {desktopScreen && (
+              <TransactionListDesktop>
+                {allExpenses}
+                {color}
+              </TransactionListDesktop>
+            )}
+            {tabletScreen && (
+              <TransactionListDesktop>
+                {allExpenses}
+                {color}
+              </TransactionListDesktop>
+            )}
+
+            {mobileScreen && (
+              <TransactionListMobile>
+                {allExpenses}
+                {color}
+              </TransactionListMobile>
+            )}
             <Summary />
           </TableAndSummaryContainer>
         </FrameContainer>

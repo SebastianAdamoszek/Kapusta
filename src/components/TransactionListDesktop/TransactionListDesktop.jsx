@@ -22,6 +22,7 @@ export const TransactionListDesktop = ({ children }) => {
 
   const handleDelete = event => {
     dispatch(deleteTransaction(event.currentTarget.id));
+    window.location.reload();
   };
 
   const sortedTransactions = children[0].slice().sort((a, b) => {

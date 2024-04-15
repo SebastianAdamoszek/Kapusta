@@ -56,9 +56,7 @@ export const ToTransactionButton = () => {
         <Logo2Wrapper>
           <Logo2 onClick={closeModal} />
         </Logo2Wrapper>
-        <div>
-          <MobileTransactionForm />
-        </div>
+        <MobileTransactionForm />
       </Modal>
     </>
   );

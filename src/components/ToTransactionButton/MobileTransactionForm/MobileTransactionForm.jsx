@@ -4,8 +4,11 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import SelectCategory from '../../Expenses/SelectCategory/SelectCategory';
 import AmountInput from '../../Expenses/Calculator/Calculator';
-import { OrangeButton } from '../../Buttons/OrangeButton';
-import { WhiteButton } from '../../Buttons/WhiteButton';
+import {
+  StyledWhiteButton,
+  StyledOrangeButton,
+} from 'components/Buttons/Buttons.styled';
+import DateSelector from '../../Expenses/DateSelector';
 import {
   FormWrapper,
   StyledForm,
@@ -17,7 +20,7 @@ import { addExpense, addIncome } from '../../../redux/Transactions/operations';
 
 export default function MobileTransactionForm() {
   const [elementCategory, setElementCategory] = useState('Category');
-  const [startDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
 
   const location = useLocation();
   const form = useRef(null);
@@ -85,12 +88,15 @@ export default function MobileTransactionForm() {
     dispatch(functionToDispatch(dispatchData));
     event.target.reset();
     setElementCategory('Category');
+    window.location.reload();
   };
 
   // Reset form
 
   const handleReset = () => {
+    setStartDate(new Date());
     form.current.reset();
+    setElementCategory('Category');
   };
 
   return (
@@ -98,6 +104,7 @@ export default function MobileTransactionForm() {
       <FormWrapper>
         <StyledForm onSubmit={handleSubmit} ref={form}>
           <StyledInputsContainer>
+            <DateSelector startDate={startDate} setStartDate={setStartDate} />
             <SelectCategory
               categoryArray={categoryArray}
               elementCategory={elementCategory}
@@ -111,10 +118,10 @@ export default function MobileTransactionForm() {
             <AmountInput name="sum" />
           </StyledInputsContainer>
           <ButtonWrapper>
-            <OrangeButton type="submit">INPUT</OrangeButton>
-            <WhiteButton type="button" onClick={handleReset}>
+            <StyledOrangeButton type="submit">INPUT</StyledOrangeButton>
+            <StyledWhiteButton type="button" onClick={handleReset}>
               CLEAR
-            </WhiteButton>
+            </StyledWhiteButton>
           </ButtonWrapper>
         </StyledForm>
       </FormWrapper>

@@ -9,7 +9,6 @@ export const OrangeButton = ({
   changeBalance,
 }) => {
   const handleClick = () => {
-    window.location.reload();
     // czy chcesz sie wylogować?
     if (children === 'YES') {
       dispatch();

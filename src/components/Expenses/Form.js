@@ -6,8 +6,10 @@ import { useScreenSize } from 'hooks/useScreenSize';
 import DateSelector from 'components/Expenses/DateSelector';
 import SelectCategory from './SelectCategory/SelectCategory';
 import AmountInput from './Calculator/Calculator';
-import { OrangeButton } from 'components/Buttons/OrangeButton';
-import { StyledWhiteButton } from 'components/Buttons/Buttons.styled';
+import {
+  StyledWhiteButton,
+  StyledOrangeButton,
+} from 'components/Buttons/Buttons.styled';
 import {
   FormWrapper,
   StyledForm,
@@ -89,20 +91,21 @@ export default function Form() {
     dispatch(functionToDispatch(dispatchData));
     event.target.reset();
     setElementCategory('Category');
+    window.location.reload();
   };
 
   // Reset form
+
   const handleReset = () => {
-    window.location.reload();
+    setStartDate(new Date());
+    form.current.reset();
+    setElementCategory('Category');
   };
 
   return (
     <>
       <FormWrapper>
-        <div className="tabletDatepicker">
-          <DateSelector startDate={startDate} setStartDate={setStartDate} />
-        </div>
-
+        <DateSelector startDate={startDate} setStartDate={setStartDate} />
         {!mobileScreen && (
           <StyledForm onSubmit={handleSubmit} ref={form}>
             <StyledInputsContainer>
@@ -118,7 +121,7 @@ export default function Form() {
               <AmountInput name="sum" />
             </StyledInputsContainer>
             <ButtonWrapper>
-              <OrangeButton type="submit">INPUT</OrangeButton>
+              <StyledOrangeButton type="submit">INPUT</StyledOrangeButton>
               <StyledWhiteButton type="button" onClick={handleReset}>
                 CLEAR
               </StyledWhiteButton>
