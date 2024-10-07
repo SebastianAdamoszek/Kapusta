@@ -113,3 +113,6 @@ końcu łańcucha jest obowiązkowy.
 3. Jeżeli wszystkie kroki zakończyły się sukcesem, zbudowana wersja produkcyjna
    plików projektu wysyłana jest do gałęzi `gh-pages`. W przeciwnym razie, w
    logu wykonania skryptu zostanie wskazane z czym jest problem.
+
+   
+    // "build": "npm install react-scripts@5.0.1 && react-scripts build",
